@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply font-sans antialiased text-night-900 dark:text-gray-100 bg-white dark:bg-night-950 transition-colors duration-300;
+  }
+  
+  ::selection {
+    @apply bg-brand-500/30 dark:bg-brand-400/30 text-brand-950 dark:text-white;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-200 dark:bg-night-800 rounded-full hover:bg-brand-200 dark:hover:bg-brand-800 transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+  }
+  
+  .section-title {
+    @apply font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 relative inline-block;
+  }
+  
+  .section-title-gradient {
+    @apply bg-gradient-to-r from-brand-500 to-teal-500 dark:from-brand-400 dark:to-teal-400 bg-clip-text text-transparent;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute -bottom-3 left-0 w-1/2 min-w-[80px] h-1 bg-gradient-to-r from-brand-500 to-teal-500 dark:from-brand-400 dark:to-teal-400 rounded-full;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-500 via-sapphire-500 to-teal-500 dark:from-brand-400 dark:via-sapphire-400 dark:to-teal-400;
+  }
+  
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:focus-visible:ring-brand-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-night-950;
+  }
+
+  .glass-card {
+    @apply bg-white/90 dark:bg-night-900/80 backdrop-blur-xl border border-gray-100 dark:border-night-800/50 shadow-elegant dark:shadow-elegant-dark;
+  }
+
+  .glass-card-hover {
+    @apply hover:bg-white/95 dark:hover:bg-night-900/90 hover:border-brand-100 dark:hover:border-brand-900/30 hover:shadow-glow dark:hover:shadow-glow transition-all duration-300;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-all duration-200;
+  }
+
+  .badge-primary {
+    @apply badge bg-brand-100/70 text-brand-800 dark:bg-brand-900/30 dark:text-brand-200 border border-brand-200/50 dark:border-brand-800/30;
+  }
+
+  .badge-accent {
+    @apply badge bg-teal-100/70 text-teal-800 dark:bg-teal-900/30 dark:text-teal-200 border border-teal-200/50 dark:border-teal-800/30;
+  }
+
+  .badge-secondary {
+    @apply badge bg-gray-100/70 text-gray-800 dark:bg-night-800/70 dark:text-gray-200 border border-gray-200/50 dark:border-night-700/50 hover:bg-brand-50 dark:hover:bg-brand-900/10 hover:border-brand-200/50 dark:hover:border-brand-800/30;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 focus-ring;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-brand-600 to-sapphire-600 hover:from-brand-500 hover:to-sapphire-500 text-white shadow-lg shadow-brand-500/20 dark:shadow-brand-800/30 hover:shadow-xl hover:shadow-brand-500/30 dark:hover:shadow-brand-800/40;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white dark:bg-night-800 border border-gray-200 dark:border-night-700 text-night-900 dark:text-white hover:bg-gray-50 dark:hover:bg-night-700 shadow-sm hover:shadow;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-brand-500 dark:border-brand-400 text-brand-500 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-900/20;
+  }
+
+  .input-styled {
+    @apply w-full rounded-xl border border-gray-300 dark:border-night-700 px-4 py-3 bg-white dark:bg-night-800 text-night-900 dark:text-gray-100 focus:border-brand-500 dark:focus:border-brand-400 focus:outline-none transition-all duration-200;
+  }
+
+  .animated-gradient-bg {
+    @apply bg-gradient-to-br from-brand-500 via-sapphire-500 to-teal-500 dark:from-brand-600 dark:via-sapphire-600 dark:to-teal-600 animate-gradient-xy bg-[length:200%_200%];
+  }
+
+  /* Tooltip */
+  .tooltip {
+    @apply relative inline-block;
+  }
+
+  .tooltip .tooltip-text {
+    @apply invisible absolute z-10 w-max p-2 rounded-lg bg-night-950 dark:bg-white text-white dark:text-night-950 text-xs opacity-0 transition-opacity duration-300 text-center;
+  }
+
+  .tooltip:hover .tooltip-text {
+    @apply visible opacity-100;
+  }
+
+  /* Project card styles */
+  .project-card {
+    @apply rounded-2xl overflow-hidden shadow-card dark:shadow-card-dark transition-all duration-500 hover:shadow-card-hover dark:hover:shadow-card-hover-dark;
+  }
+
+  /* Animation classes */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes dna-move {
+    0%, 100% {
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-dna-move {
+    animation: dna-move 15s infinite linear;
+  }
+  
+  .animate-dna-move-delay {
+    animation: dna-move 15s infinite linear;
+    animation-delay: -7.5s;
+  }
+  
+  @keyframes dna-fade {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }
+  
+  .animate-dna-fade {
+    animation: dna-fade 5s infinite linear;
+  }
+  
+  .animate-dna-fade-delay {
+    animation: dna-fade 5s infinite linear;
+    animation-delay: -2.5s;
+  }
+  
+  @keyframes bubble {
+    0% {
+      transform: translateX(0) scale(0.8);
+      opacity: 0;
+    }
+    20% {
+      transform: translateX(70px) scale(1.2);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(140px) scale(0.8);
+      opacity: 0;
+    }
+  }
+  
+  .animate-bubble {
+    animation: bubble 8s ease-in-out infinite;
+  }
+  
+  .animate-bubble.delay-150 {
+    animation-delay: 1s;
+  }
+}
